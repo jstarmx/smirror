@@ -1,0 +1,9 @@
+{
+  "apps": [
+    {
+      "name": "smirror",
+      "script": "dist/index.js",
+      "instances": 1
+    }
+  ]
+}
