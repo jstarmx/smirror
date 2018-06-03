@@ -3,7 +3,7 @@ import Router from 'koa-router';
 import bodyParser from 'koa-bodyparser';
 import winston from 'winston';
 
-import Message from './models/message';
+require('./interface');
 
 const app = new Koa();
 const router = new Router();
@@ -13,10 +13,6 @@ app.use(bodyParser());
 app.use(async (ctx, next) => {
   ctx.set('Content-Type', 'application/json');
   await next();
-});
-
-router.get('/', async ctx => {
-  ctx.body = await Message.all();
 });
 
 app.use(router.routes());
