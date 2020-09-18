@@ -1,4 +1,5 @@
 import five from 'johnny-five';
+import moment from 'moment';
 
 import Message from '../models/message';
 
@@ -11,9 +12,9 @@ board.on('ready', async () => {
   const messages = await Message.all();
   const [message] = messages;
   lcd
-    .print(`${messages.indexOf(message) + 1}/${messages.length}`)
-    .print(` | ${message.due}`)
-    .cursor(0, 1)
-    .autoscroll()
+    .clear()
+    .print(`${messages.indexOf(message) + 1}/${messages.length}     `)
+    .print(moment(message.due).format('DD/MM/YY'))
+    .cursor(1, 0)
     .print(message.text);
 });
